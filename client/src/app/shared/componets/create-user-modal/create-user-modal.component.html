@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Új Felhasználó</h1>
+<div mat-dialog-content>
+</div>
+
+<p>Vezetéknév</p>
+<mat-form-field>
+  <input matInput [(ngModel)]="lastName" (keydown.enter)="createUser()">
+</mat-form-field>
+  <p>Keresztnév</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="firstName" (keydown.enter)="createUser()">
+  </mat-form-field>
+<div mat-dialog-actions>
+  <button mat-button [disabled]="!lastName ||!firstName"  (click)="createUser()">Létrehoz</button>
+  <button mat-button (click)="exit()" >Mégse</button>
+</div>
