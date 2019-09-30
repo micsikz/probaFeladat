@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/DataEdge
-    username: DataEdge
-    password: 123456
+    url: jdbc:postgresql://localhost:5431/postgres
+    username: docker
+    password: docker
   driver-class-name: org.postgresql.Driver
 
   jpa:

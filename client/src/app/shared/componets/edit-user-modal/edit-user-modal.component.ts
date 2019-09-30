@@ -27,6 +27,7 @@ export class EditUserModalComponent implements OnInit {
   editUser() {
     this.data.iuser.firstName = this.firstName;
     this.data.iuser.lastName = this. lastName;
+    console.log(this.data.iuser)
     this.userService.updateUser(this.data.iuser).subscribe(
       (data: any) => {
         this.dialogRef.close(EditUserModalComponent);

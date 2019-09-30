@@ -9,7 +9,7 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public baseUrl: string = '//localhost:8080';
+  public baseUrl: string = 'http://localhost:8080';
 
   public getUsers() {
     return this.httpClient.get(this.baseUrl + '/felhasznalok/list-felhasznalok');
@@ -20,10 +20,11 @@ export class UserService {
   }
 
   public updateUser(user: IUser) {
-    return this.httpClient.put(this.baseUrl + '/update', user);
+    return this.httpClient.put(this.baseUrl + '/felhasznalok/update', user);
   }
 
- /* public deleteUser(user: number) {
-    return this.httpClient.delete(this.baseUrl + '/delete', user);
-  }*/
+  public deleteUser(userId: number) {
+    console.log(this.baseUrl + '/delete/' + userId)
+    return this.httpClient.delete(this.baseUrl + '/felhasznalok/delete/' + userId);
+  }
 }

@@ -15,7 +15,7 @@ public class FelhasznalokController {
     @Autowired
     private FelhasznalokService felhasznalokService;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Felhasznalok> addFelhasznalo(@RequestBody Felhasznalok felhasznalok) {
         return ResponseEntity.ok(felhasznalokService.save(felhasznalok));
     }

@@ -18,10 +18,31 @@ public class Felhasznalok {
     @Column(name = "lastName")
     private String lastName;
 
-    public Felhasznalok(Long id, String firstName, String lastName) {
+    @Column(name = "deleted")
+    private boolean deleted;
+
+    public Felhasznalok(Long id, String firstName, String lastName, boolean deleted) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.deleted = deleted;
+    }
+
+    public Felhasznalok(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.deleted = false;
+    }
+
+    public Felhasznalok() {
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     public Long getId() {

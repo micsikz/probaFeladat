@@ -11,6 +11,6 @@
     <input matInput [(ngModel)]="firstName" (keydown.enter)="editUser()">
   </mat-form-field>
 <div mat-dialog-actions>
-  <button mat-button [disabled]="!lastName ||!firstName"  (click)="editUser()">Módosítás</button>
+  <button mat-button [disabled]="!lastName ||!firstName"  (click)="editUser()" cdkFocusInitial>Módosítás</button>
   <button mat-button (click)="exit()" >Mégse</button>
 </div>

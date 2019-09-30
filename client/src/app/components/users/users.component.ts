@@ -7,6 +7,7 @@ import { CreateUserModalComponent } from 'src/app/shared/componets/create-user-m
 import { EditUserModalComponent } from 'src/app/shared/componets/edit-user-modal/edit-user-modal.component';
 import { IUser } from 'src/app/interfaces/Iuser';
 import { DeleteUserConfirmComponent } from 'src/app/shared/componets/delete-user-confirm/delete-user-confirm.component';
+import { DeleteUserForeverComponent } from 'src/app/shared/componets/delete-user-forever/delete-user-forever.component';
 
 
 @Component({
@@ -20,9 +21,9 @@ export class UsersComponent implements OnInit {
               private dialog: MatDialog) { }
 
     displayedColumns: string[] = ['id', 'lastName', 'firstName', 'actions'];
-    dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
+    dataSource = new MatTableDataSource<any>();
     searchKey: string;
-
+    notDeletedUsers: any[] = [];
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -75,11 +76,33 @@ export class UsersComponent implements OnInit {
       );
     }
 
+    deleteUserForever(user: IUser) {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = false;
+      dialogConfig.autoFocus = true;
+      dialogConfig.width = '30%';
+      dialogConfig.height = '50%';
+      dialogConfig.data = {iuser: user};
+      this.dialog.open(DeleteUserForeverComponent, dialogConfig).afterClosed().subscribe(
+        (data: any) => {
+          this.getData();
+        }
+      );
+    }
+
 
     getData() {
       this.userService.getUsers().subscribe(
         (data: any) => {
-          this.dataSource = new MatTableDataSource(data);
+          this.notDeletedUsers = [];
+          for (let i = 0; i < data.length; i++) {
+            if (data[i].deleted === false) {
+              this.notDeletedUsers.push(data[i]);
+              console.log("Első");
+            }
+          }
+          this.dataSource = new MatTableDataSource(this.notDeletedUsers);
+          console.log("második");
         }
       );
     }

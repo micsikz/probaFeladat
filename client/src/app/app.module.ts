@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CreateUserModalComponent } from './shared/componets/create-user-modal/create-user-modal.component';
 import { EditUserModalComponent } from './shared/componets/edit-user-modal/edit-user-modal.component';
 import { DeleteUserConfirmComponent } from './shared/componets/delete-user-confirm/delete-user-confirm.component';
+import { DeleteUserForeverComponent } from './shared/componets/delete-user-forever/delete-user-forever.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { DeleteUserConfirmComponent } from './shared/componets/delete-user-confi
     UsersComponent,
     CreateUserModalComponent,
     EditUserModalComponent,
-    DeleteUserConfirmComponent
+    DeleteUserConfirmComponent,
+    DeleteUserForeverComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { DeleteUserConfirmComponent } from './shared/componets/delete-user-confi
   entryComponents: [
   CreateUserModalComponent,
   EditUserModalComponent,
-  DeleteUserConfirmComponent
+  DeleteUserConfirmComponent,
+  DeleteUserForeverComponent
   ],
 })
 export class AppModule { }
