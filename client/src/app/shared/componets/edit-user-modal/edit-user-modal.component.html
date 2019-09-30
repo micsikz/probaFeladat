@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Felhasználó szerkesztése</h1>
+<div mat-dialog-content>
+</div>
+
+<p>Vezetéknév</p>
+<mat-form-field>
+  <input matInput [(ngModel)]="lastName" (keydown.enter)="editUser()">
+</mat-form-field>
+  <p>Keresztnév</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="firstName" (keydown.enter)="editUser()">
+  </mat-form-field>
+<div mat-dialog-actions>
+  <button mat-button [disabled]="!lastName ||!firstName"  (click)="editUser()" cdkFocusInitial>Módosítás</button>
+  <button mat-button (click)="exit()" >Mégse</button>
+</div>
